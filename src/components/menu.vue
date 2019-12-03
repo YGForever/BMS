@@ -11,7 +11,7 @@
             :default-active="activeIndex"
             router
             >
-            <!-- <NavMenu :navMenus="menuData"></NavMenu> -->
+             <NavMenu :navMenus="menuData"></NavMenu>
             </el-menu>
         </el-col>
         <router-view></router-view>
@@ -41,141 +41,33 @@ export default {
   },
     methods : {
         menu(){
-            // console.log("menu中的方法")
-            // console.log('菜单列表')
-            // console.log(get_menu())
             get_menu().then(res=>{
-                console.log(res);
+              this.menuData=this.formatData(res);
+              console.log(this.menuData);
             }).catch (err => {
                 console.log(err);
             })
+        },
+        formatData(data){
+            let save=[];
+            data.forEach((item)=>{
+                let big={};
+                big.entity={};
+                big.entity.alias=item.text;
+                big.entity.icon=item.icon;
+                big.entity.name=item.viewURI;
+                if(item.children!=null&&item.children.length>0){
+                    big.childs=this.formatData(item.children);
+                }
+                save.push(big);
+            })
+            return save;
         }
     },
    data: function () {
       return {
-        activeIndex: 'aa',
-
-      //   menuData: [
-      //   {
-      //     //一级
-      //     entity: {
-      //       name: "/activity",
-      //       icon: "el-icon-message",
-      //       alias: "活动列表"
-      //     }
-      //   },
-
-      //   {
-      //     //一级
-      //     entity: {
-      //       name:'',
-      //       icon: "el-icon-message",
-      //       alias: "基地"
-      //     },
-      //     //二级
-      //     childs: [
-      //       {
-      //         entity: {
-      //           name: "/base/list",
-      //           icon: "el-icon-loading",
-      //           alias: "基地列表",
-      //         }
-      //       },
-      //       {
-      //         entity: {
-      //           name: "/base",
-      //           icon: "el-icon-bell",
-      //           alias: "基地详情",
-      //           //  value: { path: "/base2/list" }
-      //         }
-      //       },
-      //       {
-      //         entity: {
-      //           name: "menuManage",
-      //           icon: "el-icon-edit",
-      //           alias: "菜单管理",
-      //           value: "/system/menu"
-      //         }
-      //       },
-      //       {
-      //         entity: {
-      //           name: "groupManage",
-      //           icon: "el-icon-mobile-phone\r\n",
-      //           alias: "分组管理",
-      //           value: "/system/group"
-      //         }
-      //       }
-      //     ]
-      //   },
-      //   {
-      //     //一级
-      //     entity: {
-      //       name: "",
-      //       icon: "el-icon-news",
-      //       alias: "三级菜单"
-      //     },
-      //     //二级
-      //     childs: [
-      //       {
-      //         entity: {
-      //           name: "accountManage",
-      //           icon: "el-icon-phone-outline\r\n",
-      //           alias: "帐号管理",
-      //           value: ""
-      //         },
-      //         //三级
-      //         childs: [
-      //           {
-      //             entity: {
-      //               name: "emailManage",
-      //               icon: "el-icon-sold-out\r\n",
-      //               alias: "邮箱管理",
-      //               value: "/content/email"
-      //             }
-      //           },
-      //           {
-      //             entity: {
-      //               name: "passManage",
-      //               icon: "el-icon-service\r\n",
-      //               alias: "密码管理",
-
-      //               value: "/content/pass"
-      //             }
-      //           }
-      //         ]
-      //       },
-      //       {
-      //         entity: {
-      //           name: "integralManage",
-      //           icon: "el-icon-picture",
-      //           alias: "积分管理",
-
-      //           value: "/user/integral"
-      //         }
-      //       }
-      //     ]
-      //   },
-      //   {
-      //     //一级
-      //     entity: {
-      //       name: "contentManage",
-      //       icon: "el-icon-rank",
-      //       alias: "四级菜单"
-      //     },
-      //     //er级
-      //     childs: [
-      //       {
-      //         entity: {
-      //           name: "classifyManage2",
-      //           icon: "el-icon-printer",
-      //           alias: "分类管理"
-      //         },
-
-      //       }
-      //     ]
-      //   }
-      // ]
-
+          activeIndex: 'aa',
+          menuData:[],
       };
     },
 

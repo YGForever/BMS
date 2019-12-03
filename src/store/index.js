@@ -16,13 +16,13 @@ export default new Vuex.Store({
       state.demoValue = demoValue
     },
     setToken(state,value){
-      state.token = localStorage.setItem("Authorization_token",value);
+      state.token = sessionStorage.setItem("Authorization_token",value);
     }
   },
   getters: {
     //get方法
     getDemoValue: state => state.demoValue,
-    getToken : state => localStorage.getItem("Authorization_token"),
+    getToken : state => sessionStorage.getItem("Authorization_token"),
   },
 
 
