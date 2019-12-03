@@ -180,8 +180,79 @@
 
                 }
             }
+            .header-info{
+                // height: 1.3rem;
+                padding-right: .5rem;
+                display: flex;
+                align-items: center;
+                position: relative;
+                // z-index: 1000;
+                .user{
+                    >img{
+                        width: .32rem;
+                        height: .32rem;
+                        border-radius: 50%;
+                        // background: #fff;
+                    }
+                    >span{
+                        display: inline-block;
+                        margin-left: .03rem;
+                    }
+                }
+
+            }
+            
+            .class:hover .info-show{
+                display:block;
+                z-index: 1000;
+                }
+            .info-show{
+                display: none;
+                position: fixed;
+                top: .53rem;
+                // right: .1rem;
+                background: $c_w;
+                z-index: 1000;
+                border-radius: $c-dir;
+                overflow: hidden;
+                >div{
+                    padding:.05rem .08rem;
+        
+                }
+            }
             .usericon{
+                position: relative;
                 margin-right: .2rem;
+                .user{
+                    >img{
+                        width: .35rem;
+                        height: .35rem;
+                        border-radius: 50%;
+                        // background: #fff;
+                    }
+                    >span{
+                        display: inline-block;
+                        margin-left: .03rem;
+                    }
+                }
+                .user_list{
+                    display: none;
+                    border-radius: .03rem;
+                    padding: .08rem;
+                    font-size: .12rem;
+                    background: $c-w;
+                    color: $btn-primary;
+                    position: fixed;
+                    z-index: 1000;
+                    top:.58rem;
+
+                }
+            }
+            .usericon:hover{
+                .user_list{
+                    display: block; 
+                    z-index: 1000;
+                }
             }
 
         }
