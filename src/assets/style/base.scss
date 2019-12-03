@@ -1,0 +1,252 @@
+
+/* 弹窗 */
+.fade{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+    .fade_info{
+        background: $c-w;
+        border-radius: .04rem;
+        display: flex;
+        flex-direction: column;
+        margin: .2rem;
+        position: relative;
+    }
+    
+    .fade_info_small{
+        min-width: 5rem;
+        min-height: 5rem;
+        @extend .fade_info
+        
+    }
+    .fade_info_inside{
+        min-width: 7rem;
+        min-height: 7rem;
+        @extend .fade_info
+    }
+    .fade_info_max{
+        min-width: 10rem;
+        min-height: 10rem;
+        @extend .fade_info
+    }
+        
+    
+}
+.fade_title{
+    border-bottom:$border-dark;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 .15rem;
+}
+.info_list{
+    padding:.2rem .4rem;
+    >li{
+        padding-top: .2rem;
+        >label{
+            display: inline-block;
+            width: 1.2rem;
+            text-align: right;
+            color: $c-f;
+        }
+        >input{
+            width: 2.5rem;
+            height: .4rem;
+            border-radius: 5px;
+            border: none;
+            border:$border-dark;
+        }
+    }
+}
+.fade_footer{
+    width: 100%;
+    // display: flex;
+    // justify-content: center;
+    // justify-items: center;
+    clear: both; 
+    
+    display: block;  
+    text-align: center;      
+    margin: 0px auto;
+    position: absolute;
+    bottom: .5rem;
+
+}
+
+@mixin btn-prmary ($w:auto,$padding:8px 15px,$margin:.1rem,$outline:none,$border:none,$bdr:3px,$background:$btn-primary,$color:$c-w){
+    width: $w; 
+    padding: $padding;
+    outline: $outline;
+    border: $border;
+    border-radius: $bdr;
+    background: $background;
+    // margin-right: .1rem;
+    color: $c-w;
+    &:hover{
+        background: rgba(121, 106, 238, 0.7);
+    }
+
+}
+
+@mixin btn-default ($w:auto,$padding:8px 15px,$outline:none,$border:none,$bdr:3px,$background:$btn-default,$color:$c-w){
+    width: $w; 
+    padding: $padding;
+    outline: $outline;
+    border: $border;
+    border-radius: $bdr;
+    background: $btn-default;
+    // margin-right: .1rem;
+    color: $c-w;
+    &:hover{
+        background: rgba(134, 142, 150, 0.7);
+    }
+}
+//头部 
+.header{
+    width: 100%;
+    height: .7rem; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2F333E;
+    // background: #3D4955;
+    color: $c_w;
+    .header-name{
+        // background: #fff;
+        font-size: .24rem;
+        font-weight: bold;
+        letter-spacing: .05rem;
+        padding-left: .5rem;
+    }
+    .header-info{
+        // height: 1.3rem;
+        padding-right: .5rem;
+        display: flex;
+        align-items: center;
+        
+        @at-root{
+            
+            .search{
+                margin-right: .2rem;
+            }
+            .notice{
+                position: relative;
+                margin-right: .2rem;
+                >a{
+                    >span{
+                        display: inline-block;
+                        text-align: center;
+                        font-size: .12rem;
+                        width: .25rem;
+                        height: .25rem;
+                        line-height: .25rem;
+                        border-radius: 50%;
+                        background: red;
+                        color: $c-w;
+                        position: absolute;
+                        top: -10px;
+                        right: -10px;
+
+                    }
+
+                }
+            }
+            .email{
+                margin-right: .2rem;
+                position: relative;
+                >a{
+                    >span{
+                        display: inline-block;
+                        text-align: center;
+                        font-size: .12rem;
+                        width: .25rem;
+                        height: .25rem;
+                        line-height: .25rem;
+                        border-radius: 50%;
+                        background: gold;
+                        color: $c-w;
+                        position: absolute;
+                        top: -10px;
+                        right: -10px;
+
+                    }
+
+                }
+            }
+            .usericon{
+                margin-right: .2rem;
+            }
+
+        }
+    }
+     
+  
+    
+
+}
+//固定导航栏
+.nav{
+    position: fixed;
+    top: .7rem;
+    left: 0;
+    bottom: 0;
+}
+
+
+//路由列表标题
+.title_a{
+    height: .4rem;
+    // background: #ccc;
+    padding: .1rem;
+    font-size: .20rem;
+    color: $btn-primary;
+    .color{
+        display: inline;
+        // color: $btn-primary;
+    }
+}
+//主体类容
+.content{
+    width: calc(100vw - 200px);
+    overflow-y: scroll;
+    position:fixed;
+    left:200px;
+    top: .7rem;
+    bottom: 0;
+    padding:.15rem .15rem .25rem .15rem;
+    // background-color:rgb(238, 237, 236);
+
+}
+.page_list{
+    margin: 0 .4rem .3rem .2rem;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+// .btn-select{
+//     display: flex;
+// }
+.page{
+    text-align: center;
+    margin: 0 .4rem .2rem .2rem;
+}
+
+//登录界面
+.login{
+    width: calc(100vw - 200px);
+    // height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+
+
