@@ -27,7 +27,7 @@
 </template>
 <script>
 import Vue from 'vue'
-import {get_login} from "@/API/login";
+import {get_login,get_user} from "@/API/login";
 import toast from '../components/toast'
 import store from '@/store/index';
 export default {
@@ -55,6 +55,7 @@ export default {
             get_login(params).then(res=>{
                 console.log(res)
                 if(res.data!=null){
+                    this.get_user(); 
                     this.$message({
                         type:'success',
                         message:'登录成功！',
@@ -81,6 +82,20 @@ export default {
                 console.log(error)
             })
         },
+        //获取用户信息
+        get_user(){
+            get_user("api/userInfo/"+this.$store.getters.getUserType,{}).then(res=>{
+            // console.log(res)
+            if(res.code==200){
+                this.$store.commit("setUserInfo",res.data);
+                console.log(this.$store.getters.getUserInfo);
+            }
+            }).catch(error=>{
+                console.log(error)
+            })
+        },
+
+        //记住密码
         remember(){
             // console.log(localStorage.setItem("user","username"));
             // console.log(this.username);

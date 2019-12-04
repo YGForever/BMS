@@ -25,14 +25,14 @@
             </ul>
           </li> -->
           <li class="header-info class">
-            <div class="user" @click="get_user()">
+            <div class="user" >
               <img src="@/assets/images/user.jpg">
               <span>user</span>
             </div>
             <div class="info-show">
-              <div @click="get_update()"><a href="">修改密码</a></div>
-              <div @click="get_rest()"><a href="">重置密码</a></div>
-              <div @click="get_bind()"><a href="">绑定邮箱</a></div>
+              <div @click="get_update()">修改密码</div>
+              <div @click="rest()">重置密码</div>
+              <div @click="get_bind()">绑定邮箱</div>
             </div>
           </li>
 
@@ -42,9 +42,11 @@
     </div>
 </template>
 <script>
+import {rest} from "@/API/login";
+import store from '@/store/index';
 export default {
     mounted(){
-      console.log('用户信息')
+      // console.log('用户信息')
     },
     data(){
 
@@ -54,14 +56,19 @@ export default {
 
     },
    methods:{
-    //  get_user(){
-       
-    //    this.show = true;
-    //    console.log(this.show)
+     //重置密码
+     rest(){
+       console.log('重置密码')
+       console.log(this.$store.getters.getUserType);
+       console.log(this.$store.getters.getUserInfo)
 
-    //  }
+    //   rest("api/resetPwd/"+this.$store.getters.getUserType+'/'+this.$store.getters.getUserInfo.id,{}).then(res=>{
+    //      console.log(res);
+    //    })
+     }
 
-   }
+    
+  }
 
 }
 </script>
